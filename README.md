@@ -4,13 +4,13 @@ This is a fully functional frontend + Firebase Basic intern portal created for t
 
 Features:
 
-Firebase-powered login and signup (email & password)  
-Personalized dashboard with intern info  
-Referral code generation  
-Static rewards and leaderboard section  
-Fully responsive UI  
-Hosted on Netlify  
-100% serverless (no backend required)
+• Firebase-powered login and signup (email & password)  
+• Personalized dashboard with intern info  
+• Referral code generation  
+• Static rewards and leaderboard section  
+• Fully responsive UI  
+• Hosted on Netlify  
+• 100% serverless (no backend required)
 
 Tech Stack:
 
