@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login | Intern Portal</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -13,10 +13,10 @@
       <h2>Login</h2>
       <form id="login-form">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username" required />
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
         <button type="submit">Enter Dashboard</button>
       </form>
@@ -27,6 +27,7 @@
   <script>
     document.getElementById('login-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+
       const username = e.target.username.value;
       const password = e.target.password.value;
 
@@ -38,15 +39,15 @@
         });
 
         if (!res.ok) {
-          alert('Invalid username or password');
+          alert("Invalid username or password");
           return;
         }
 
         const user = await res.json();
-        localStorage.setItem('user', JSON.stringify(user));
-        window.location.href = 'dashboard.html';
+        localStorage.setItem("user", JSON.stringify(user));
+        window.location.href = "dashboard.html";
       } catch (err) {
-        alert('Login failed, please try again.');
+        alert("Login failed. Please try again.");
         console.error(err);
       }
     });

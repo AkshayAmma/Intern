@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard | Intern Portal</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -29,15 +29,14 @@
   </div>
 
   <script>
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      document.getElementById('name').textContent = user.name;
-      document.getElementById('referral').textContent = user.referralCode;
-      document.getElementById('donations').textContent = user.donations;
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      alert("Please log in first.");
+      window.location.href = "index.html";
     } else {
-      document.getElementById('name').textContent = "Not logged in";
-      document.getElementById('referral').textContent = "-";
-      document.getElementById('donations').textContent = "-";
+      document.getElementById("name").textContent = user.name;
+      document.getElementById("referral").textContent = user.referralCode;
+      document.getElementById("donations").textContent = user.donations;
     }
   </script>
 </body>
