@@ -1,7 +1,9 @@
 Basic Intern Portal:
+
 This is a fully functional frontend + Firebase Basic intern portal created for the Full Stack Developer Internship . It includes real authentication, a dynamic dashboard, and a static leaderboard.
 
 Features:
+
 Firebase-powered login and signup (email & password)  
 Personalized dashboard with intern info  
 Referral code generation  
@@ -11,6 +13,7 @@ Hosted on Netlify
 100% serverless (no backend required)
 
 Tech Stack:
+
 
 | Layer        | Technology               |
 |--------------|--------------------------|
@@ -55,8 +58,4 @@ This project is hosted on Netlify for live access.
 5. Leaderboard shows static top performers
 
 
----
 
-## 📄 License
-
-This project is licensed for academic and internship submission use only.
