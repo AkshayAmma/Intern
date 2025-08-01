@@ -12,8 +12,8 @@
       <h1>Welcome to the Intern Portal</h1>
       <h2>Login</h2>
       <form id="login-form">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Enter your password" required>
@@ -24,31 +24,42 @@
     </div>
   </div>
 
-  <script>
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBCKCTtbP-EHCr285XS9BPu5eHGex1q2FU",
+      authDomain: "intern-c3135.firebaseapp.com",
+      projectId: "intern-c3135",
+      storageBucket: "intern-c3135.appspot.com",
+      messagingSenderId: "587732527840",
+      appId: "1:587732527840:web:4d0511fae33f4356ff7e85"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const username = e.target.username.value;
+      const email = e.target.email.value;
       const password = e.target.password.value;
 
       try {
-        const res = await fetch('https://intern-0i42.onrender.com/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password })
-        });
+        await signInWithEmailAndPassword(auth, email, password);
 
-        if (!res.ok) {
-          alert("Invalid username or password");
-          return;
-        }
+        const user = {
+          name: email.split("@")[0],
+          referralCode: `${email.split("@")[0]}2025`,
+          donations: Math.floor(Math.random() * 5000)
+        };
 
-        const user = await res.json();
         localStorage.setItem("user", JSON.stringify(user));
         window.location.href = "dashboard.html";
       } catch (err) {
-        alert("Login failed. Please try again.");
-        console.error(err);
+        alert("Login failed: " + err.message);
       }
     });
   </script>

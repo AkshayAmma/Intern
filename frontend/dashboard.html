@@ -26,17 +26,23 @@
     <a href="leaderboard.html">
       <button class="button-primary">View Leaderboard</button>
     </a>
+    <button onclick="logout()" class="button-secondary">Logout</button>
   </div>
 
   <script>
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
-      alert("Please log in first.");
+      alert("Please login first.");
       window.location.href = "index.html";
     } else {
       document.getElementById("name").textContent = user.name;
       document.getElementById("referral").textContent = user.referralCode;
       document.getElementById("donations").textContent = user.donations;
+    }
+
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
     }
   </script>
 </body>
