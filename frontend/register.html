@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | Intern Portal</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <div class="login-box">
       <h1>Welcome to the Intern Portal</h1>
       <h2>Register</h2>
-      <form>
+      <form onsubmit="register(); return false;">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
@@ -19,12 +19,31 @@
         <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
         <label for="confirm_password">Confirm Password</label>
-        <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
 
-        <button type="button" onclick="window.location.href='dashboard.html'">Enter Dashboard</button>
+        <button type="submit">Register</button>
       </form>
-      
+      <p>Already registered? <a href="login.html">Login here</a></p>
     </div>
   </div>
+
+  <script>
+    function register() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm_password").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      // Simulate registration
+      localStorage.setItem("username", username);
+
+      // Redirect to dashboard
+      window.location.href = "dashboard.html";
+    }
+  </script>
 </body>
 </html>

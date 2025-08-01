@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leaderboard | Intern Portal</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -20,30 +20,43 @@
             <th>Donations (₹)</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>John Doe</td>
-            <td>john2025</td>
-            <td>2000</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jane Smith</td>
-            <td>jane2025</td>
-            <td>1500</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Rahul Kumar</td>
-            <td>rahul2025</td>
-            <td>1200</td>
-          </tr>
+        <tbody id="leaderboard-body">
+          <!-- Rows will be populated by JS -->
         </tbody>
       </table>
     </div>
 
     <button class="button-primary" onclick="window.location.href='dashboard.html'">⬅ Back to Dashboard</button>
   </div>
+
+  <script>
+    async function fetchLeaderboard() {
+      try {
+        const res = await fetch('https://intern-0i42.onrender.com/api/users');
+        const users = await res.json();
+
+        const tbody = document.getElementById('leaderboard-body');
+        tbody.innerHTML = '';
+
+        // Sort users by donations descending
+        users.sort((a, b) => b.donations - a.donations);
+
+        users.forEach((user, index) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${user.name}</td>
+            <td>${user.referralCode}</td>
+            <td>${user.donations}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        console.error('Error loading leaderboard:', err);
+      }
+    }
+
+    fetchLeaderboard();
+  </script>
 </body>
 </html>
