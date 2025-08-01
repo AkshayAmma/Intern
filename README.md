@@ -32,11 +32,11 @@ Tech Stack:
  Folder Structure:
 
 intern-portal/
-├── index.html # Login page
-├── register.html # Signup page (Firebase)
-├── dashboard.html # User dashboard after login
-├── leaderboard.html # Static leaderboard
-├── style.css # Main stylesheet
+1. index.html # Login page
+2.  register.html # Signup page (Firebase)
+3.  Dashboard.html # User dashboard after login
+4.  Leaderboard.html # Static leaderboard
+5.  style.css # Main stylesheet
 
  Deployment (Netlify):
 
